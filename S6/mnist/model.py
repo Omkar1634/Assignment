@@ -1,8 +1,6 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import torch.optim as optim
-from torchvision import datasets, transforms
 from torchsummary import summary
 
 
@@ -31,6 +29,14 @@ class S6_Model(nn.Module):
 
 
 
-def model_summary(model,input_size):
-        
-        summary(model, input_size=input_size)
+
+
+def model_summary(model, input_size):
+    """
+    This function displays a summary of the model, providing information about its architecture,
+    layer configuration, and the number of parameters it contains.
+    :param model: model
+    :param input_size: input_size for model
+    :return:
+    """
+    summary(model, input_size=input_size)
