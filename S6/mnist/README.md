@@ -35,6 +35,12 @@ In summary, this function sets up the data pipeline for training and testing on 
 
 ## Model
 Model Architecture 
+![1](https://github.com/Omkar1634/ERA_V2_Omkar/assets/64948764/345013c7-47c1-4fe5-a6e0-5d841b5a0eb0)
+
+Model Summary
+![2](https://github.com/Omkar1634/ERA_V2_Omkar/assets/64948764/ef183a99-1d92-4a17-a6a1-7268064744e8)
+
+
 
 
 
