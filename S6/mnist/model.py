@@ -4,32 +4,61 @@ import torch.nn.functional as F
 from torchsummary import summary
 
 
-class S6_Model(nn.Module):
+class S6_Model_1(nn.Module):
     def __init__(self):
-        super(S6_Model, self).__init__()
-        self.conv1 = nn.Conv2d(1, 32, 3, padding=1) #input -? OUtput? RF
-        self.conv2 = nn.Conv2d(32, 64, 3, padding=1)
-        self.pool1 = nn.MaxPool2d(2, 2)
-        self.conv3 = nn.Conv2d(64, 128, 3, padding=1)
-        self.conv4 = nn.Conv2d(128, 256, 3, padding=1)
-        self.pool2 = nn.MaxPool2d(2, 2)
-        self.conv5 = nn.Conv2d(256, 512, 3)
-        self.conv6 = nn.Conv2d(512, 1024, 3)
-        self.conv7 = nn.Conv2d(1024, 10, 3)
+        super(S6_Model_1, self).__init__()
 
+        self.conv1 = nn.Sequential(
+            nn.Conv2d(in_channels=1, out_channels=128, kernel_size=7, padding=3, bias=False), 
+            nn.BatchNorm2d(128),
+            nn.ReLU(),
+            nn.MaxPool2d(2, 2),
+        )
+        self.conv1x1 = nn.Sequential(
+            nn.Conv2d(in_channels=128, out_channels=8, kernel_size=3, padding=1),  
+            nn.BatchNorm2d(8),
+            nn.ReLU(),
+        )
+        self.conv2 = nn.Sequential(
+            nn.Conv2d(in_channels=8, out_channels=4, kernel_size=3, padding=1),  
+            nn.BatchNorm2d(4),
+            nn.ReLU(),
+            nn.MaxPool2d(2, 2),
+        )
+        self.conv3 = nn.Sequential(
+            nn.Conv2d(in_channels=4, out_channels=4, kernel_size=(3, 3), padding=1),  
+            nn.BatchNorm2d(4),
+            nn.ReLU(),
+            nn.MaxPool2d(2, 2),
+        )
+        self.conv1x1_2 = nn.Sequential(
+            nn.Conv2d(in_channels=4, out_channels=8, kernel_size=3, padding=1), 
+            nn.BatchNorm2d(8),
+            nn.ReLU(),
+        )
+        self.conv4 = nn.Sequential(
+            nn.Conv2d(8, 16, kernel_size=3, padding=1),  
+            nn.ReLU(),
+            nn.BatchNorm2d(16),
+            nn.MaxPool2d(2),
+        )
+        self.conv5 = nn.Sequential(
+            nn.Conv2d(16, 10, kernel_size=1),
+            nn.AdaptiveAvgPool2d(1),  
+        )
+        
     def forward(self, x):
-        x = self.pool1(F.relu(self.conv2(F.relu(self.conv1(x)))))
-        x = self.pool2(F.relu(self.conv4(F.relu(self.conv3(x)))))
-        x = F.relu(self.conv6(F.relu(self.conv5(x))))
-        x = F.relu(self.conv7(x))
-        x = x.view(-1, 10)
-        return F.log_softmax(x)
-    
+        x = self.conv1(x)
+        x = self.conv1x1(x)
+        x = self.conv2(x)
+        x = self.conv3(x)
+        x = self.conv1x1_2(x)
+        x = self.conv4(x)
+        x = self.conv5(x)
 
-
-
-
-
+        x = x.view(x.size(0), -1)  
+        x = F.log_softmax(x, dim=1)
+        return x
 
 def model_summary(model, input_size):
     """
