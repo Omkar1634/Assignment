@@ -32,3 +32,14 @@ The training and test datasets are loaded using datasets.MNIST with appropriate 
 DataLoader:
 
 In summary, this function sets up the data pipeline for training and testing on the MNIST dataset, implementing common preprocessing steps and data augmentation for the training set to improve model generalization.
+
+## Model
+Model Architecture 
+
+
+
+
+## Util
+
+
+## S6 Jupyter Notebook
