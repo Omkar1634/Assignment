@@ -54,7 +54,7 @@ class S6_Model_1(nn.Module):
         x = self.conv3(x)
         x = self.conv1x1_2(x)
         x = self.conv4(x)
-        x = self.conv5(x)
+        #x = self.conv5(x)
 
         x = x.view(x.size(0), -1)  
         x = F.log_softmax(x, dim=1)
