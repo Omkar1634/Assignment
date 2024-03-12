@@ -28,10 +28,12 @@ DataLoader:
 
 ## Model.py
 Model Architecture 
-![1](https://github.com/Omkar1634/ERA_V2_Omkar/assets/64948764/345013c7-47c1-4fe5-a6e0-5d841b5a0eb0)
+![image](https://github.com/Omkar1634/ERA_V2_Omkar/assets/64948764/cc75d140-b9ee-4c06-a133-83da0cfd6458)
+
 
 Model Summary
-![2](https://github.com/Omkar1634/ERA_V2_Omkar/assets/64948764/ef183a99-1d92-4a17-a6a1-7268064744e8)
+![image](https://github.com/Omkar1634/ERA_V2_Omkar/assets/64948764/4d695331-517f-4fdf-93fb-1eea82f78e3b)
+
 
 
 ## Util.py
@@ -41,22 +43,22 @@ This code provides a comprehensive setup for training and evaluating a neural ne
 
 2. train: This function orchestrates the training process for one epoch. It iterates over the training dataset, computes the loss for each batch using a specified loss criterion, and updates the model's weights using backpropagation. It also accumulates and reports the training loss and accuracy.
 
-3. test: Similar to train, but for evaluating the model's performance on a test dataset. It disables gradient computations (to save memory and computations) and accumulates the test loss and accuracy. The model is set to evaluation mode (model.eval()) to ensure that operations like dropout are disabled during testing.
+3. test: Similar to train, but for evaluating the model's performance on a test dataset. It disables gradient computations (to save memory and computations) and accumulates the test loss and accuracy. The model is set to evaluation mode (model. eval()) to ensure that operations like dropout are disabled during testing.
 
 4. plot_acc_loss: This function visualizes the training process by plotting both the training and test loss and accuracy as a function of the training epoch. This is useful for monitoring the model's learning progress and diagnosing issues like overfitting or underfitting.
 
 The script also initializes lists to keep track of the training and test losses and accuracies (train_losses, test_losses, train_acc, test_acc), which are updated during the training and testing phases and used for plotting the performance metrics.
 
 ## S6 Jupyter Notebook
-![image](https://github.com/Omkar1634/ERA_V2_Omkar/assets/64948764/ea514dc8-2b75-4393-8a4d-05e9d54b940f)
+![image](https://github.com/Omkar1634/ERA_V2_Omkar/assets/64948764/84ba427a-0d34-40cd-bbde-dff72e3e0c78)
 
-Top Left - Training Loss: This graph shows the training loss decreasing sharply initially and then continuing to decrease at a slower rate. This indicates that the model is learning from the training data, with most learning happening in the early epochs.
+Top Left - Training Loss: This graph features dramatic spikes at regular intervals, suggesting that something unusual is happening during training, possibly due to learning rate adjustments or data shuffling that introduces harder examples.
 
-Top Right - Test Loss: The test loss shows a similar sharp decline in the beginning but fluctuates slightly in the subsequent epochs. Generally, the loss is decreasing, which is a positive sign of the model's performance on the test set.
+Top Right - Test Loss: Similar to the training loss, the test loss also exhibits spikes, but they are less pronounced. This indicates that the model may be experiencing instability at certain points during testing, which could be reflective of changes in the learning rate or anomalies in the test data distribution.
 
-Bottom Left - Training Accuracy: This graph displays the training accuracy increasing sharply at first and then plateauing with a slight upward trend. The model reaches a high level of accuracy relatively quickly and maintains it throughout further training, which could be indicative of good generalization if it correlates with test accuracy.
+Bottom Left - Training Accuracy: This shows periodic drops in accuracy, mirroring the spikes in the training loss graph. It's likely that these drops correspond to the same epochs where loss spikes, which could be when the learning rate is scheduled to change or when different subsets of data are presented to the model.
 
-Bottom Right - Test Accuracy: The test accuracy also increases significantly at the start. However, unlike the training accuracy, it shows more variability, with a general upward trend. The model seems to perform well on the test set, and the fluctuations could be due to the model encountering slightly more difficult or previously unseen variations in the test set.
+Bottom Right - Test Accuracy: The test accuracy graph demonstrates less variation compared to training accuracy but still shows sudden dips at the same epochs where the training graph shows accuracy drops. The general trend is upward, indicating that the model's ability to generalize is improving over time despite the periodic drops.
 
 ## Conclusion
-Employing just 17.9 k parameters to classify handwritten digits from the MNIST dataset with astounding accuracy, yielding a 99.4% accuracy rate.
+The periodicity of the spikes/drops suggests a cyclical pattern in the training process, which might be due to a cyclical learning rate schedule or some form of regularization technique being applied at those points. Overall, despite the volatility, the model appears to be learning and improving in performance, as seen by the general downward trend in loss and upward trend in accuracy. However, the causes of these regular disruptions would need to be investigated to optimize the training process. Employing just 15.7 k parameters to classify handwritten digits from the MNIST dataset with astounding accuracy, yielding a 99.4% accuracy rate. 
