@@ -10,7 +10,7 @@ test_losses = []
 train_acc = []
 test_acc = []
 
-def get_correct_pred_count_S7(prediction, labels):
+def get_correct_pred_count(prediction, labels):
     """
      It calculates the count of predictions where the index of the maximum predicted value matches the label index.
      The result is returned as an integer.
