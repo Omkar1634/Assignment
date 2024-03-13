@@ -4,9 +4,11 @@ import torch.nn.functional as F
 from torchsummary import summary
 
 
-class S6_Model_1(nn.Module):
+
+
+class S7_Model(nn.Module):
     def __init__(self):
-        super(S6_Model_1, self).__init__()
+        super(S7_Model, self).__init__()
 
         self.conv1 = nn.Sequential(
             nn.Conv2d(in_channels=1, out_channels=32, kernel_size=7, padding=3, bias=False), 
@@ -62,6 +64,9 @@ class S6_Model_1(nn.Module):
         x = x.view(x.size(0), -1)  
         x = F.log_softmax(x, dim=1)
         return x
+
+
+
 
 
 
