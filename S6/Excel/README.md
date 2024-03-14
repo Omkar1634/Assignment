@@ -14,9 +14,30 @@ Backward propagation, or backpropagation, is the second phase of the learning pr
 
 ![alt text](image-1.png)
 
+Below I will illustrate a simple feedforward neural network architecture and the backpropagation process used for training such networks. I will be using above image to example the process.
 
-h1 = w1*i1 + w2*i2		
-h2 = w3*i1 + w4*i2		
+
+Our input values for i1 = 0.05 and i2 = 0.1 and the target value t1 = 0.5 and t2 = 0.5 are fixed.
+W1=0.15,W2=0.2,W3=0.25,W4=0.3,W5=0.4,W6=0.45,W7=0.5,W8=0.55
+
+The circles labeled i1 and i2 represent the input neurons. The circles labeled h1 and h2 represent hidden neurons, and o1 and o2 are the output neurons. Each neuron in one layer is connected to every neuron in the next layer, indicating a fully connected network.  The lines connecting the neurons have associated weights (w1 to w8), which are the parameters that the network will learn. These weights determine the strength and direction (positive or negative influence) of the connection between neurons. The hidden and output neurons have activation functions (not specified in the image), which are mathematical equations that determine the output of a neural network node given an input or set of inputs. The activations (a_h1, a_h2, a_o1, a_o2) represent the output of the neurons after the activation function has been applied.
+
+Now according to the formula = h1 = w1*i1 + w2*i2 and h2 = w3*i1 + w4*i2	
+
+
+4. Forward Propagation: This is the process where input values are fed into the neural network and passed through the layers to produce an output. In this network, the inputs are passed through the weights to the hidden layer, and then the results are passed forward again to the output layer.
+
+5. Error Calculation: E1 and E2 represent the errors for each output neuron. The error is calculated as the difference between the target output (t1, t2) and the actual output from the network (a_o1, a_o2). The formula 1/2 * (target - output)^2 is a common way to calculate the error in regression tasks; it's called the mean squared error (MSE). The factor of 1/2 is used for mathematical convenience when taking derivatives.
+
+6. Backpropagation: This is the training process where the error from the output layer is propagated back through the network to adjust the weights. The objective is to minimize the total error (E_Total), which is the sum of the individual errors from each output neuron (E1 + E2). The adjustments are made according to the derivative of the error with respect to each weight, which informs how the weights need to change to reduce the error.
+
+7. Learning: Through many iterations of forward propagation and backpropagation, with continual adjustments to the weights, the neural network 'learns' the correct mappings from inputs to outputs, ideally minimizing the error across all training examples.
+
+
+
+
+
+	
 a_h1 = σ(h1) = 1/(1 + exp(-h1))		
 a_h2 = σ(h2)		
 o1 = w5*a_h1 + w6*a_h2		
