@@ -1,12 +1,5 @@
 # Creating a Deep Neural Network for the given Task/Target:
-## S7_Datasets:
-This file has two different function:
-1. load_data_S7: In this function we just applied basic transformation to train data i.e resize,totensor and normalization.
-whereas the transformation to the test data is totensor and normalization.
-This function has been applied to model 4 and model 5.
 
-2. load_data_S7_1: This function is applied to model 1,2 and 3 with transformation to the train data i.e. randomapply,randomrotation,resize,totensor and normalization.
-whereas the transformation to the test data is totensor and normalization.
 
 ## Target:
 Target is same for the all DNN Models
@@ -109,3 +102,28 @@ Training Accuracy: The training accuracy increases rapidly to above 95% within t
 Test Accuracy: The test accuracy graph exhibits more variability. It starts at around 97.4%, dips to below 97%, then increases to approximately 98.6% before leveling off and showing some fluctuation. This behavior might suggest some overfitting to the training data, but overall, the test accuracy remains high, which is a positive sign.
 
 In summary, the model shows excellent learning capabilities with high accuracy and low loss on both the training and test datasets. The leveling off in both loss graphs indicates that additional training epochs beyond this point might not yield significant improvements. The slight fluctuations in test loss and accuracy suggest that while the model is generalizing well, there might be some overfitting or instability that could be addressed with techniques such as dropout, regularization, or more varied training data.
+
+
+## Utils
+This code provides a comprehensive setup for training and evaluating a neural network model using PyTorch. It is structured to work with datasets that can be loaded in batches (for instance, using PyTorch's DataLoader), and it's particularly suited for tasks like image classification. The code is organized into functions that handle different aspects of the training and evaluation process:
+
+get_correct_pred_count: This utility function calculates the number of correct predictions by comparing the predicted labels with the true labels.
+
+train: This function orchestrates the training process for one epoch. It iterates over the training dataset, computes the loss for each batch using a specified loss criterion, and updates the model's weights using backpropagation. It also accumulates and reports the training loss and accuracy.
+
+test: Similar to train, but for evaluating the model's performance on a test dataset. It disables gradient computations (to save memory and computations) and accumulates the test loss and accuracy. The model is set to evaluation mode (model. eval()) to ensure that operations like dropout are disabled during testing.
+
+plot_acc_loss: This function visualizes the training process by plotting both the training and test loss and accuracy as a function of the training epoch. This is useful for monitoring the model's learning progress and diagnosing issues like overfitting or underfitting.
+
+The script also initializes lists to keep track of the training and test losses and accuracies (train_losses, test_losses, train_acc, test_acc), which are updated during the training and testing phases and used for plotting the performance metrics.
+
+
+## S7_Datasets:
+This file has two different function:
+1. load_data_S7: In this function we just applied basic transformation to train data i.e resize,totensor and normalization.
+whereas the transformation to the test data is totensor and normalization.
+This function has been applied to model 4 and model 5.
+
+2. load_data_S7_1: This function is applied to model 1,2 and 3 with transformation to the train data i.e. randomapply,randomrotation,resize,totensor and normalization.
+whereas the transformation to the test data is totensor and normalization.
+
