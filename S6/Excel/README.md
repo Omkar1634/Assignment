@@ -106,7 +106,7 @@ This formula is systematically applied to all weights in the network, from w1 th
  
 
  We try with different learning rates like 0.1,0.2,0.5,0.8,1,2. Below are the loss graphs for them.
- 
+
 <p float="left">
   <figure>
     <img src="https://github.com/Omkar1634/ERA_V2_Omkar/assets/64948764/85b4dba8-f2e5-462a-92c0-3998260bb22c" width="450" />
@@ -133,3 +133,7 @@ This formula is systematically applied to all weights in the network, from w1 th
     <figcaption>LR: 2.0</figcaption>
   </figure>
 </p>
+
+
+# Conclusion:
+We've completed the development of a straightforward neural network that uses forward and backward propagation. This setup enables us to tinker with different variables, including initial settings and the learning rate. We've grasped how to compute the gradients of the weights in relation to the loss function and the way to adjust these weights through gradient descent to reduce the loss. Furthermore, we've recognized the importance of choosing suitable initial parameters and establishing the correct step size for the gradient descent method. This hands-on experience has enhanced our understanding of how neural networks function and their application in addressing practical challenges.
