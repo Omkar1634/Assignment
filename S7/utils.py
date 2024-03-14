@@ -40,10 +40,13 @@ def train_S7(model, device, train_loader, optimizer, criterion):
 
     for batch_idx, (data, target) in enumerate(pbar):
         data, target = data.to(device), target.to(device)
+        
+        #print(target)
         optimizer.zero_grad()
 
         # Predict
         pred = model(data)
+        #print(pred)
 
         # Calculate loss
         loss = criterion(pred, target)
