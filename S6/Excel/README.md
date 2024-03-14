@@ -13,7 +13,7 @@ Forward propagation is the initial phase of the learning process in a neural net
 **Backward Propagation:**
 Backward propagation, or backpropagation, is the second phase of the learning process in neural networks, following forward propagation. It is where the network learns by adjusting the weights of the neurons. Backpropagation computes the gradient of the loss function (a measure of the error) with respect to each weight by the chain rule, propagating the error backward through the network. Starting from the output layer and moving backward to the hidden layers, the algorithm calculates the contributions of each neuron to the error and updates the weights to minimize the loss function. This process allows the network to improve its predictions during training.
 
-# Pratical 
+# Practical 
 
 ![alt text](image-1.png)
 
@@ -28,9 +28,9 @@ Below I will illustrate a simple feedforward neural network architecture and the
 
 According to the formula :<br>
 h1 = w1*i1 + w2*i2 = 0.15*0.05+0.2*0.1 = 0.0275 <br>
-h2 = w3*i1 + w4*i2	= 0.25*0.05+0.4*0.1 = 0.0425
+h2 = w3*i1 + w4*i2	= 0.25*0.05+0.4*0.1 = 0.0425 <br>
 
-Now we will apply activation function to a_h1 and a_h2:
+Now we will apply activation function to a_h1 and a_h2: <br>
 a_h1 = σ(h1) = 1/(1 + exp(-h1))	= 0.5068 	<br>
 a_h2 = σ(h2) = 1/(1 + exp(-h2))	= 0.5106 <br>
 
@@ -45,13 +45,49 @@ a_o2 = σ(o2)	=   0.630480835 <br>
 
 2. Error Calculation: E1 and E2 represent the errors for each output neuron. The error is calculated as the difference between the target output (t1, t2) and the actual output from the network (a_o1, a_o2). The formula 1/2 * (target - output)^2 is a common way to calculate the error in regression tasks; it's called the mean squared error (MSE). The factor of 1/2 is used for mathematical convenience when taking derivatives.
 
-E_total = E1 + E2		
-E1 = ½ * (t1 - a_o1)²		
-E2 = ½ * (t2 - a_o2)²
 
+E1 = ½ * (t1 - a_o1)²	 = 0.005668754	<br>
+E2 = ½ * (t2 - a_o2)²  = 0.008512624	<br>
+E_total = E1 + E2		= 	0.014181378 <br>
 
 
 3. Backpropagation: This is the training process where the error from the output layer is propagated back through the network to adjust the weights. The objective is to minimize the total error (E_Total), which is the sum of the individual errors from each output neuron (E1 + E2). The adjustments are made according to the derivative of the error with respect to each weight, which informs how the weights need to change to reduce the error.
+
+First, calculate derivates of ∂E/∂w1, ∂E/∂w2, ∂E/∂w3, ∂E/∂w4, ∂E/∂w5, ∂E/∂w6, ∂E/∂w7, and ∂E/∂w8. <br>
+
+Let's derive the formula for calculating the derivative of the error with respect to W5. <br>
+
+∂E_total/∂w5 = ∂(E1 + E2)/∂w5					<br>
+∂E_total/∂w5 = ∂E1/∂w5					<br>
+∂E_total/∂w5 = ∂E1/∂w5 = ∂E1/∂a_o1*∂a_o1/∂o1*∂o1/∂w5	<br>				
+∂E1/∂a_o1 =  ∂(½ * (t1 - a_o1)²)/∂a_o1 = (a_01 - t1)	<br>				
+∂a_o1/∂o1 =  ∂(σ(o1))/∂o1 = a_o1 * (1 - a_o1)				<br>	
+∂o1/∂w5 = a_h1					<br>
+
+Similarly, calculate derivatives error with respect to W6, W7, W8 <br>
+
+∂E_total/∂w5 = (a_01 - t1) * a_o1 * (1 - a_o1) *  a_h1	=   0.012880819 <br>
+∂E_total/∂w6 = (a_01 - t1) * a_o1 * (1 - a_o1) *  a_h2  = 	0.012976085	 <br>
+∂E_total/∂w7 = (a_02 - t2) * a_o2 * (1 - a_o2) *  a_h1  =   0.015408348	 <br>
+∂E_total/∂w8 = (a_02 - t2) * a_o2 * (1 - a_o2) *  a_h2  =   0.015522308  <br>
+
+
+∂E1/∂a_h1 = (a_01 - t1) * a_o1 * (1 - a_o1) * w5								<br>
+∂E2/∂a_h1 = (a_02 - t2) * a_o2 * (1 - a_o2) * w7								<br>
+∂E_total/∂a_h1 = (a_01 - t1) * a_o1 * (1 - a_o1) * w5 +  (a_02 - t2) * a_o2 * (1 - a_o2) * w7					<br>			
+∂E_total/∂a_h2 = (a_01 - t1) * a_o1 * (1 - a_o1) * w6 +  (a_02 - t2) * a_o2 * (1 - a_o2) * w8					<br>			
+
+∂E_total/∂w1 = ∂E_total/∂a_h1 * ∂a_h1/∂h1 * ∂h1/∂w1		<br>			
+∂E_total/∂w2 = ∂E_total/∂a_h1 * ∂a_h1/∂h1 * ∂h1/∂w2		<br>			
+∂E_total/∂w3 = ∂E_total/∂a_h2 * ∂a_h2/∂h2 * ∂h2/∂w3		<br>			
+
+
+∂E_total/∂w1 = ((a_01 - t1) * a_o1 * (1 - a_o1) * w5 +  (a_02 - t2) * a_o2 * (1 - a_o2) * w7) * a_h1 * (1 - a_h1) * i1  = 0.000316993	 <br>
+∂E_total/∂w2 = ((a_01 - t1) * a_o1 * (1 - a_o1) * w5 +  (a_02 - t2) * a_o2 * (1 - a_o2) * w7) * a_h1 * (1 - a_h1) * i2  = 0.000633987		<br>										
+∂E_total/∂w3 = ((a_01 - t1) * a_o1 * (1 - a_o1) * w6 +  (a_02 - t2) * a_o2 * (1 - a_o2) * w8) * a_h2 * (1 - a_h2) * i1  = 0.000351869		<br>											
+∂E_total/∂w4 = ((a_01 - t1) * a_o1 * (1 - a_o1) * w6 +  (a_02 - t2) * a_o2 * (1 - a_o2) * w8) * a_h2 * (1 - a_h2) * i2	= 0.000703737		<br>									
+
+
 
 4. Learning: Through many iterations of forward propagation and backpropagation, with continual adjustments to the weights, the neural network 'learns' the correct mappings from inputs to outputs, ideally minimizing the error across all training examples.
 
