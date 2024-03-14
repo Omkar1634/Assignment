@@ -42,15 +42,17 @@ a_o1 = σ(o1)	= 	0.606477732
 a_o2 = σ(o2)	=   0.630480835
 
 
+2. Error Calculation: E1 and E2 represent the errors for each output neuron. The error is calculated as the difference between the target output (t1, t2) and the actual output from the network (a_o1, a_o2). The formula 1/2 * (target - output)^2 is a common way to calculate the error in regression tasks; it's called the mean squared error (MSE). The factor of 1/2 is used for mathematical convenience when taking derivatives.
+
+E_total = E1 + E2		
+E1 = ½ * (t1 - a_o1)²		
+E2 = ½ * (t2 - a_o2)²
 
 
 
+3. Backpropagation: This is the training process where the error from the output layer is propagated back through the network to adjust the weights. The objective is to minimize the total error (E_Total), which is the sum of the individual errors from each output neuron (E1 + E2). The adjustments are made according to the derivative of the error with respect to each weight, which informs how the weights need to change to reduce the error.
 
-5. Error Calculation: E1 and E2 represent the errors for each output neuron. The error is calculated as the difference between the target output (t1, t2) and the actual output from the network (a_o1, a_o2). The formula 1/2 * (target - output)^2 is a common way to calculate the error in regression tasks; it's called the mean squared error (MSE). The factor of 1/2 is used for mathematical convenience when taking derivatives.
-
-6. Backpropagation: This is the training process where the error from the output layer is propagated back through the network to adjust the weights. The objective is to minimize the total error (E_Total), which is the sum of the individual errors from each output neuron (E1 + E2). The adjustments are made according to the derivative of the error with respect to each weight, which informs how the weights need to change to reduce the error.
-
-7. Learning: Through many iterations of forward propagation and backpropagation, with continual adjustments to the weights, the neural network 'learns' the correct mappings from inputs to outputs, ideally minimizing the error across all training examples.
+4. Learning: Through many iterations of forward propagation and backpropagation, with continual adjustments to the weights, the neural network 'learns' the correct mappings from inputs to outputs, ideally minimizing the error across all training examples.
 
 
 
@@ -60,11 +62,8 @@ a_o2 = σ(o2)	=   0.630480835
 
 		
 
-a_o1 = σ(o1)		
-a_o2 = σ(o2)		
-E_total = E1 + E2		
-E1 = ½ * (t1 - a_o1)²		
-E2 = ½ * (t2 - a_o2)²		
+	
+		
 
 
 
