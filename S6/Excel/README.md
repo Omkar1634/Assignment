@@ -89,24 +89,24 @@ Similarly, calculate derivatives error with respect to W6, W7, W8 <br>
 
 
 
-4. Learning: Through many iterations of forward propagation and backpropagation, with continual adjustments to the weights, the neural network 'learns' the correct mappings from inputs to outputs, ideally minimizing the error across all training examples.
+4. Updating Weights: 
+During the backpropagation process, the neural network's weights are refined through an optimization technique. This refinement is guided by the gradient, which informs the direction and magnitude of the weight adjustments. The learning rate is a crucial hyperparameter in this context, acting as a scaling factor for the gradient, thereby influencing the size of the weight updates. Essentially, the weight is revised by deducting the product of the learning rate and the weight's gradient from its current value. This procedure is repeated iteratively for each weight within the network to progressively reduce error. <br>
 
+For instance, to calculate the updated value of weight W1: <br>
 
+The new value of W1 is derived by subtracting the product of the learning rate (LR) and the partial derivative of the error with respect to W1 from the existing value of W1, which can be mathematically represented as: <br>
 
+New W1 = W1 - LR * (∂E/∂W1) <br>
 
+This formula is systematically applied to all weights in the network, from w1 through w8, to optimize the model during training. <br>
 
-	
+![alt text](image-2.png)
 
-		
+5. Learning Rates : Through many iterations of forward propagation and backpropagation, with continual adjustments to the weights, the neural network 'learns' the correct mappings from inputs to outputs, ideally minimizing the error across all training examples.
+ 
 
-	
-		
-
-
-
-
-
-# Learning Rate:
+ We try with different learning rates like 0.1,0.2,0.5,0.8,1,2. Below are the loss graphs for them.
+ 
 <p float="left">
   <figure>
     <img src="https://github.com/Omkar1634/ERA_V2_Omkar/assets/64948764/85b4dba8-f2e5-462a-92c0-3998260bb22c" width="450" />
