@@ -13,7 +13,7 @@ Forward propagation is the initial phase of the learning process in a neural net
 **Backward Propagation:**
 Backward propagation, or backpropagation, is the second phase of the learning process in neural networks, following forward propagation. It is where the network learns by adjusting the weights of the neurons. Backpropagation computes the gradient of the loss function (a measure of the error) with respect to each weight by the chain rule, propagating the error backward through the network. Starting from the output layer and moving backward to the hidden layers, the algorithm calculates the contributions of each neuron to the error and updates the weights to minimize the loss function. This process allows the network to improve its predictions during training.
 
-# pratical 
+# Pratical 
 
 ![alt text](image-1.png)
 
@@ -21,25 +21,26 @@ Below I will illustrate a simple feedforward neural network architecture and the
 
 
 **Our input values for i1 = 0.05 and i2 = 0.1 and the target value t1 = 0.5 and t2 = 0.5 are fixed.**  
-**Weights: W1=0.15,W2=0.2,W3=0.25,W4=0.3,W5=0.4,W6=0.45,W7=0.5,W8=0.55** 
+**Weights: W1=0.15,W2=0.2,W3=0.25,W4=0.3,W5=0.4,W6=0.45,W7=0.5,W8=0.55.** <br>
 **Activation Function: σ(x) = 1/(1 + exp(-x))**
 
 1. Forward Propagation: This is the process where input values are fed into the neural network and passed through the layers to produce an output. In this network, the inputs are passed through the weights to the hidden layer, and then the results are passed forward again to the output layer. The circles labeled i1 and i2 represent the input neurons. The circles labeled h1 and h2 represent hidden neurons, and o1 and o2 are the output neurons. Each neuron in one layer is connected to every neuron in the next layer, indicating a fully connected network.  The lines connecting the neurons have associated weights (w1 to w8), which are the parameters that the network will learn. These weights determine the strength and direction (positive or negative influence) of the connection between neurons. The hidden and output neurons have activation functions (not specified in the image), which are mathematical equations that determine the output of a neural network node given an input or set of inputs. The activations (a_h1, a_h2, a_o1, a_o2) represent the output of the neurons after the activation function has been applied.
 
-According to the formula : h1 = w1*i1 + w2*i2 = 0.15*0.05+0.2*0.1 = 0.0275 <br>
+According to the formula :<br>
+h1 = w1*i1 + w2*i2 = 0.15*0.05+0.2*0.1 = 0.0275 <br>
 h2 = w3*i1 + w4*i2	= 0.25*0.05+0.4*0.1 = 0.0425
 
 Now we will apply activation function to a_h1 and a_h2:
-a_h1 = σ(h1) = 1/(1 + exp(-h1))	= 0.5068 	
-a_h2 = σ(h2) = 1/(1 + exp(-h2))	= 0.5106
+a_h1 = σ(h1) = 1/(1 + exp(-h1))	= 0.5068 	<br>
+a_h2 = σ(h2) = 1/(1 + exp(-h2))	= 0.5106 <br>
 
-Again, we will repeated the same steps:
+Again, we will repeated the same steps: <br>
 
-o1 = w5*a_h1 + w6*a_h2	= 	0.432530357
-o2 = w7*a_h1 + w8*a_h2	=   0.534280154
+o1 = w5*a_h1 + w6*a_h2	= 	0.432530357 <br>
+o2 = w7*a_h1 + w8*a_h2	=   0.534280154 <br>
  
-a_o1 = σ(o1)	= 	0.606477732
-a_o2 = σ(o2)	=   0.630480835
+a_o1 = σ(o1)	= 	0.606477732 <br>
+a_o2 = σ(o2)	=   0.630480835 <br>
 
 
 2. Error Calculation: E1 and E2 represent the errors for each output neuron. The error is calculated as the difference between the target output (t1, t2) and the actual output from the network (a_o1, a_o2). The formula 1/2 * (target - output)^2 is a common way to calculate the error in regression tasks; it's called the mean squared error (MSE). The factor of 1/2 is used for mathematical convenience when taking derivatives.
