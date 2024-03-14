@@ -313,9 +313,9 @@ class S7_Model_5(nn.Module):
         self.conv7 = nn.Sequential(
             nn.Conv2d(4,8, kernel_size=3),
             nn.ReLU(),
-            nn.AdaptiveAvgPool2d(1)  # This reduces each 16-channel feature map to 1x1
+            nn.AdaptiveAvgPool2d(1)  
         )
-        self.fc = nn.Linear(8, 10)  # There are 16 channels coming from conv7, and 10 output classes
+        self.fc = nn.Linear(8, 10)  
 
     def forward(self, x):
         x = self.conv1(x)
