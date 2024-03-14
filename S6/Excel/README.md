@@ -26,7 +26,7 @@ Below I will illustrate a simple feedforward neural network architecture and the
 
 1. Forward Propagation: This is the process where input values are fed into the neural network and passed through the layers to produce an output. In this network, the inputs are passed through the weights to the hidden layer, and then the results are passed forward again to the output layer. The circles labeled i1 and i2 represent the input neurons. The circles labeled h1 and h2 represent hidden neurons, and o1 and o2 are the output neurons. Each neuron in one layer is connected to every neuron in the next layer, indicating a fully connected network.  The lines connecting the neurons have associated weights (w1 to w8), which are the parameters that the network will learn. These weights determine the strength and direction (positive or negative influence) of the connection between neurons. The hidden and output neurons have activation functions (not specified in the image), which are mathematical equations that determine the output of a neural network node given an input or set of inputs. The activations (a_h1, a_h2, a_o1, a_o2) represent the output of the neurons after the activation function has been applied.
 
-According to the formula : h1 = w1*i1 + w2*i2 = 0.15*0.05+0.2*0.1 = 0.0275 \n
+According to the formula : h1 = w1*i1 + w2*i2 = 0.15*0.05+0.2*0.1 = 0.0275 <br>
 h2 = w3*i1 + w4*i2	= 0.25*0.05+0.4*0.1 = 0.0425
 
 Now we will apply activation function to a_h1 and a_h2:
