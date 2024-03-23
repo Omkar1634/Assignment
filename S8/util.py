@@ -21,7 +21,7 @@ def get_correct_pred_count(prediction, labels):
     return prediction.argmax(dim=1).eq(labels).sum().item()
 
 
-def train(model, device, train_loader, optimizer, criterion,lambda_l1=0.001):
+def train(model, device, train_loader, optimizer, criterion):
     """
     This function is responsible for training the model using the provided training data
     :param model:
@@ -46,13 +46,7 @@ def train(model, device, train_loader, optimizer, criterion,lambda_l1=0.001):
         pred = model(data)
 
         # Calculate loss
-        loss = criterion(pred, target)
-        # L1 Regularization
-        l1_loss = 0
-        for param in model.parameters():
-            l1_loss += param.abs().sum()
-        loss += lambda_l1 * l1_loss
-        
+        loss = criterion(pred, target)    
         train_loss += loss.item()
 
         # Backpropagation
