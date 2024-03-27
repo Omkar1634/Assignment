@@ -15,8 +15,8 @@ class AlbumentationsTransform:
 
 def load_data_S9():
     train_transform = AlbumentationsTransform(A.Compose([
-        A.HorizontalFlip(always_apply=True, p=0.75),
-        A.ShiftScaleRotate(),
+        A.HorizontalFlip(p=1),
+        A.ShiftScaleRotate(shift_limit=0.0625, scale_limit=0.1, rotate_limit=45, p=0.5),
         A.CoarseDropout(max_holes=1, min_holes=1, max_height=16, min_height=16, max_width=16, min_width=16, fill_value=0, mask_fill_value=None),
         A.Normalize((0.49139968, 0.48215827, 0.44653124), (0.24703233, 0.24348505, 0.26158768)),
         ToTensorV2(),
