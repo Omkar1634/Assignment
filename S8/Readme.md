@@ -39,6 +39,9 @@ I have used two Optimizers SGD & Adam to compare the train and test accuracy.
       
       To summarize, while the model is showing improvement over time on both the training and test data, there are signs of instability, particularly at certain epochs where there are spikes in loss and drops in accuracy. This could be due to various reasons like overfitting, need for better hyperparameter tuning, data issues, or potentially the need for a more sophisticated model architecture. It would be beneficial to explore these areas to improve the model's performance and ensure it is learning stably and consistently.
 
+3. MissClassified Images:
+   ![image](https://github.com/Omkar1634/ERA_V2_Omkar/assets/64948764/b11706e0-a8f3-4ef4-832e-8116a899aa03)
+
 
 
 # 2. Network with Layer Normalization 
@@ -76,6 +79,8 @@ I have used two Optimizers SGD & Adam to compare the train and test accuracy.
       
       The accuracy metrics, while generally improving, suggest that there may be some overfitting occurring since the training accuracy is higher and less variable than the test accuracy. This might be addressed by techniques like introducing regularization or collecting more diverse training data. It could also be worth examining if the model has reached its capacity and consider experimenting with a more complex model architecture if the problem demands it.
          
+3. MissClassified Images: 
+   ![image](https://github.com/Omkar1634/ERA_V2_Omkar/assets/64948764/7a6f1963-acde-4060-8c88-7ca4aed2818c)
 
 
 # 3. Network with Batch Normalization
@@ -111,7 +116,10 @@ A. **Training Loss**: The training loss graph depicts a strong downward trend, l
 B. **Test Loss**: The test loss decreases significantly initially and then oscillates, with some upward trends, suggesting periods where the model's performance on the test set has worsened. This could indicate some overfitting or the model's sensitivity to the specific test data.
 
 C. **Training Accuracy**: The training accuracy graph shows a steady increase, leveling off as the epochs increase, which again is typical in the later stages of training as the model starts to saturate in its learning capacity on the training data.
+
 D. **Test Accuracy**: The test accuracy improves markedly up to around the 15th epoch and then exhibits some fluctuations, with a general upward trend. The fluctuations are less pronounced than in the test loss graph, indicating that while the model's predictions on the test set are not perfectly stable, the overall trend is positive.
 
-Compared to the previous graphs, the training loss and accuracy here show a smoother convergence, and while the test accuracy is more volatile than the training accuracy, it still shows an overall improvement. The fluctuations in test loss and accuracy indicate the model might be reacting to nuances in the test data, which could be addressed by fine-tuning the model, perhaps through hyperparameter optimization or using techniques like dropout or batch normalization to improve generalization. The goal is to have a model that not only fits the training data well but also generalizes effectively to new, unseen data.
+the training loss and accuracy here show a smoother convergence, and while the test accuracy is more volatile than the training accuracy, it still shows an overall improvement. The fluctuations in test loss and accuracy indicate the model might be reacting to nuances in the test data, which could be addressed by fine-tuning the model, perhaps through hyperparameter optimization or using techniques like dropout or batch normalization to improve generalization. The goal is to have a model that not only fits the training data well but also generalizes effectively to new, unseen data.
+3. MissClassified Images:
+  ![image](https://github.com/Omkar1634/ERA_V2_Omkar/assets/64948764/ed4b1d26-9585-443c-abef-f2ae9feb90e8)
 
