@@ -15,3 +15,14 @@ Depthwise separable convolution is a type of convolution operation used in deep 
 Dilated convolution is a mathematical operation used in image and signal processing. It is a type of convolution that increases the spatial separation between the filters used to apply the operation. This allows the operation to capture more complex features from the input signal. Dilated convolution is often used in computer vision tasks such as object detection and segmentation. Finally, Dilated convolution can be defined as function that takes an image as input and produces an output image, where at each output pixel, the corresponding output value is computed as a weighted sum of the values in the input pixel’s neighbourhood, with the weights determined by a learnable filter.  
 
 ## 4. Target:
+1. Targeted Accuracy: 85%
+2. Parameters: 200k
+3. one of the layers must use Depthwise Separable Convolution
+4. one of the layers must use Dilated Convolution
+5.  Data Augmentation using albumentations library: <br>
+A. A.HorizontalFlip(p=1).<br>
+B. A.ShiftScaleRotate(shift_limit=0.0625, scale_limit=0.1, rotate_limit=45, p=0.5).<br>
+C. A.CoarseDropout(max_holes=1, min_holes=1, max_height=16, min_height=16, max_width=16, min_width=16, fill_value=(mean of your dataset), mask_fill_value=None).
+
+
+## 5. Analysis:
