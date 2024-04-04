@@ -26,3 +26,6 @@ C. A.CoarseDropout(max_holes=1, min_holes=1, max_height=16, min_height=16, max_w
 
 
 ## 5. Analysis:
+Achieve Accuracy : Train: Loss=1.1478 Accuracy=64.11  and Test set: Average loss: 0.0015, Accuracy: 7482/10000 (74.82%) <br>
+Parameter : 153,946 <br>
+![image](https://github.com/Omkar1634/ERA_V2_Omkar/assets/64948764/67f19c20-5b9e-4941-8bf1-f8b801516a91)
